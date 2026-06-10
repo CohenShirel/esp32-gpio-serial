@@ -1,16 +1,24 @@
 const int LED_PIN = 25;
+const int BTN_PIN = 16;
 
 void setup_pins() 
 {
   pinMode(LED_PIN, OUTPUT);
+  pinMode(BTN_PIN, INPUT_PULLUP);
 }
 
-void update_led() 
+void update_led()
 {
-  digitalWrite(LED_PIN, HIGH);
-  delay(500);                  
-  digitalWrite(LED_PIN, LOW);  
-  delay(500);                 
+  int btn_state = digitalRead(BTN_PIN);
+
+  if (btn_state == LOW)
+  {
+    digitalWrite(LED_PIN, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED_PIN, LOW);
+  }
 }
 
 void setup() 
