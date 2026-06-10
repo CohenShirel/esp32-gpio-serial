@@ -1,10 +1,16 @@
 const int LED_PIN = 25;
 const int BTN_PIN = 16;
+const int POT_PIN = 34;
 
 void setup_pins() 
 {
   pinMode(LED_PIN, OUTPUT);
   pinMode(BTN_PIN, INPUT_PULLUP);
+}
+
+int read_sensor()
+{
+  return analogRead(POT_PIN);
 }
 
 void update_led()
@@ -29,5 +35,7 @@ void setup()
 
 void loop() 
 {
-  update_led(); 
+  update_led();
+  Serial.println(read_sensor());
+  delay(500);
 }
